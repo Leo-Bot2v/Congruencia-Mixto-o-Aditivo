@@ -10,9 +10,12 @@ Este proyecto es una aplicación de escritorio desarrollada utilizando **PySide6
 
 ## Tecnologías utilizadas
 
-- **Backend**: Python con **PySide6** y **QtWebEngine**.
-- **Frontend**: HTML, CSS y JavaScript (con tecnologías como Bootstrap, SweetAlert2, Three.js y GLTFLoader).
-- **Interacción**: Comunicación entre el frontend y el backend mediante **QWebChannel**.
+- **Backend**: Python con **PySide6** y **QtWebEngine** para la creación de la aplicación de escritorio.
+- **Frontend**: HTML, CSS y JavaScript, utilizados en la vista web incrustada en la aplicación mediante **QWebEngineView**. El frontend incluye tecnologías como:
+  - **Bootstrap**: para el diseño responsivo.
+  - **SweetAlert2**: para notificaciones atractivas.
+  - **Three.js y GLTFLoader**: para la visualización de gráficos 3D y modelos.
+- **Interacción**: Comunicación entre el frontend (HTML, CSS, JavaScript) y el backend (Python) mediante **QWebChannel**.
 
 ## Instalación
 
