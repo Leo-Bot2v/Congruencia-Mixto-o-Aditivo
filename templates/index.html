@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+    <title>Formulario Fénix</title>
+    <link rel="stylesheet" href="../static/Externos/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/Recursos/css/Herramientas.css">
+    <link rel="stylesheet" href="../static/Recursos/css/styles.css">
+    <script src="../static/Recursos/js/Herramientas.js"></script>
+    <script src="../static/Externos/js/popper.min.js"></script>
+    <script src="../static/Externos/js/bootstrap.min.js"></script>
+    <script src="../static/Externos/js/three.min.js"></script>
+    <script src="../static/Externos/js/GLTFLoader.js"></script>
+    <script src="../static/Externos/js/sweetalert2@11.js"></script>
+    <script src="qrc:///qtwebchannel/qwebchannel.js"></script> <!-- Incluir el script del QWebChannel -->
+</head>
+<body>
+    <div class="close-btn-window" onclick="cerrarPagina()">×</div>
+    <div class="min-btn-window" onclick="minimizarPagina()">-</div>
+    <div class="container" id="formulario">
+        <h2 class="mb-4 titulo">🔥 Congruencia Mixto o Aditivo 🔥</h2>
+        <form id="form">
+            <div class="mb-3">
+                <label for="a" class="form-label">a</label>
+                <input type="number" class="form-control" id="a" placeholder="Ingrese el valor de a">
+            </div>
+            <div class="mb-3">
+                <label for="xo" class="form-label">Xo</label>
+                <input type="number" class="form-control" id="xo" placeholder="Ingrese el valor de Xo">
+            </div>
+            <div class="mb-3">
+                <label for="c" class="form-label">c</label>
+                <input type="number" class="form-control" id="c" placeholder="Ingrese el valor de c">
+            </div>
+            <div class="mb-3">
+                <label for="m" class="form-label">m</label>
+                <input type="number" class="form-control" id="m" placeholder="Ingrese el valor de m">
+            </div>
+            <div class="mb-3">
+                <label for="hasta" class="form-label">Hasta</label>
+                <input type="number" class="form-control" id="hasta" placeholder="Ingrese la cantidad de números">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Detener en:</label>
+                <div class="btn-group w-100">
+                    <button type="button" class="btn btn-secondary active" id="opHasta">Número Ingresado</button>
+                    <button type="button" class="btn btn-secondary" id="opRepetido">Número Repetido</button>
+                </div>
+            </div>            
+            <button type="submit" class="btn btn-primary w-100" onclick="mostrarTabla(event)">🔥 Calcular</button>
+        </form>
+    </div>
+    <div class="container hidden" id="tabla">
+        <h2 class="mb-4 text-center">📊 Resultados 📊</h2>
+        <div class="table-container">
+            <table class="table text-white">
+                <thead>
+                    <tr>
+                        <th style="background-color: orange;">N</th>
+                        <th style="background-color: orange;">Xo</th>
+                        <th style="background-color: orange;">Xn+1</th>
+                        <th style="background-color: orange;">#Uniforme (((a * Xo + c) mod m)/m)</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-body"></tbody>
+            </table>
+        </div>
+        <button type="submit" class="btn btn-primary w-100" onclick="mostrarFormulario(event)" style="margin-top: 40px;">🔙 Regresar</button>
+    </div>    
+    <footer style="position: absolute; bottom: 10px; width: 100%; text-align: center; font-size: 0.9rem;">
+        &copy; 2025 Todos los derechos reservados.&nbsp;
+        <a href="#" id="verMas" style="color: orange; text-decoration: none; font-weight: bold;">Ver más...</a>
+    </footer>
+    
+    <div id="modal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); background: rgba(0, 0, 0, 0.95); padding: 30px; border-radius: 15px; color: white; text-align: center; box-shadow: 0 0 30px rgba(255, 69, 0, 0.9); transition: transform 0.3s ease-out, opacity 0.3s ease-out; opacity: 0; z-index: 1000;">
+        
+        <h2 style="color: orange;">Uso de Tecnologías y Recursos</h2>
+        <p>🧩 Esta aplicación utiliza tecnologías libres como:</p>
+        <ul style="list-style: none; padding: 0; text-align: left;">
+            <li>✔️ Bootstrap (MIT License)</li>
+            <li>✔️ SweetAlert2 (MIT License)</li>
+            <li>✔️ Popper.js (MIT License)</li>
+            <li>✔️ Three.js y GLTFLoader.js (MIT License)</li>
+            <li>✔️ <strong>Google Fonts</strong> mediante <code>css2.css</code> — <em>uso gratuito incluso comercial según la <a href='#' style='color: orange;' onclick="url(event)">licencia de Google Fonts</a></em>.</li>
+        </ul>
+    
+        <h2 style="color: orange;">Desarrollador</h2>
+        <p>🚀 Desarrollado por Leo-Bot2v, combinando innovación y eficiencia para ofrecer soluciones de alto rendimiento.</p>
+        <p>💻 Aplicación de escritorio desarrollada con precisión y eficiencia, brindando una experiencia intuitiva y optimizada para el usuario.</p>
+    
+        <button id="cerrar" style="margin-top: 15px; padding: 8px 15px; border: none; background: orange; color: black; font-size: 1rem; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.3s;">Cerrar</button>
+    </div>
+
+    <script src="../static/Recursos/js/script.js"></script>
+</body>
+</html>

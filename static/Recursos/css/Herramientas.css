@@ -1,0 +1,41 @@
+.close-btn-window,
+.min-btn-window {
+    position: fixed;
+    top: 15px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+    z-index: 9999;
+}
+
+.close-btn-window {
+    right: 15px;
+}
+
+.min-btn-window {
+    right: 63px;
+}
+
+.close-btn-window:hover {
+    opacity: 1;
+    background: #ff1a1a;
+    color: black;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #00ffff;
+}
+
+.min-btn-window:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #00ffff;
+    background-color: rgb(255, 255, 255, 0.3);
+}
