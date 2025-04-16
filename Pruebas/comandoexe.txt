@@ -1,0 +1,1 @@
+pyinstaller --onefile --windowed --icon=icono.ico --add-data "Backend;Backend" --add-data "templates;templates" --add-data "static;static" --add-data "icono.res;." "Congruencia Mixto o Aditivo.py"

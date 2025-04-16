@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fondo Inimaginable</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    // Configuración básica de la escena
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Luces dinámicas de neón y efectos visuales
+    const ambientLight = new THREE.AmbientLight(0x00ffff, 0.5); // Luz ambiental azul
+    const directionalLight = new THREE.DirectionalLight(0xff4500, 1); // Luz direccional naranja
+    directionalLight.position.set(0, 10, 10);
+    scene.add(ambientLight, directionalLight);
+
+    // Crear un objeto 3D flotante que cambia de forma
+    let geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+    let material = new THREE.MeshStandardMaterial({
+        color: 0xFF5733,
+        emissive: 0xFF5733,
+        emissiveIntensity: 0.5,
+        roughness: 0.2,
+        metalness: 0.9
+    });
+
+    let mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    // Cámara dinámica que sigue el mouse
+    const mouse = new THREE.Vector2();
+    document.addEventListener('mousemove', (event) => {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    });
+
+    // Animación interactiva con cambio de forma y luz
+    function animate() {
+        requestAnimationFrame(animate);
+
+        // Rotar el objeto
+        mesh.rotation.x += 0.01;
+        mesh.rotation.y += 0.01;
+
+        // Cambiar la posición de la cámara según el mouse
+        camera.position.x += (mouse.x * 0.1 - camera.position.x) * 0.05;
+        camera.position.y += (-mouse.y * 0.1 - camera.position.y) * 0.05;
+        camera.lookAt(scene.position);
+
+        // Cambiar el color de la luz de manera interactiva
+        directionalLight.color.setHSL((Math.sin(Date.now() * 0.001) + 1) / 2, 1, 0.5);
+        
+        // Animación fluida
+        renderer.render(scene, camera);
+    }
+
+    animate();
+</script>
+<h2 style="color: orange;">Información del Modelo Phoenix</h2>
+        <p>🔥 Modelo Fénix creado por Rononono.</p>
+        <p>📜 Licencia: <strong>Creative Commons Attribution 4.0</strong>. Uso permitido incluso con fines comerciales, siempre que se dé el crédito adecuado.</p>
+        <p>🔗 Fuente del modelo: <a href="https://skfb.ly/6yS7Q" style="color: orange; text-decoration: none;" onclick="url(event)">Sketchfab</a></p>
+</body>
+</html>
