@@ -53,6 +53,11 @@ class MiNavegador(QWidget):
 
         self.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint | Qt.FramelessWindowHint)
         self.showMaximized()
+        self.webview.page().zoomFactorChanged.connect(self.block_zoom)
+    
+    def block_zoom(self, factor):
+        if factor != 1.0:
+            self.webview.setZoomFactor(1.0)
 
 # Iniciar la aplicación PySide6
 app = QApplication(sys.argv)
